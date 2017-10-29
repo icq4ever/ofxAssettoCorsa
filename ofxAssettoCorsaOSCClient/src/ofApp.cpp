@@ -372,7 +372,7 @@ void ofApp::update() {
 }
 //--------------------------------------------------------------
 void ofApp::draw(){
-	stringstream physicsOutput;
+	stringstream physicsOutut;
 	physicsOutput << "PHYSICS =================================================================" << endl << endl
 		<< setw(24) << "packetID : "			<< physicsData->packetId << endl
 		<< setw(24) << "gas : "					<< physicsData->gas << endl
@@ -427,63 +427,71 @@ void ofApp::draw(){
 
 	stringstream graphicsOutput;
 	graphicsOutput << "GRAPHICS INFO =============================" << endl << endl
-		<< setw(24) << "packetID : "		<< graphicsData->packetId << endl
-		<< setw(24) << "STATUS : " << graphicsData->status << endl
-		<< setw(24) << "session : " << graphicsData->session << endl
-		<< setw(24) << "completed laps : " << graphicsData->completedLaps << endl
-		<< setw(24) << "position : " << graphicsData->position << endl
-		<< setw(24) << "current time s : " << graphicsData->currentTime << endl
-		<< setw(24) << "current time : " << graphicsData->iCurrentTime << endl
-		<< setw(24) << "last time : " << graphicsData->iLastTime << endl
-		<< setw(24) << "best time : " << graphicsData->iBestTime << endl
-		<< setw(24) << "sessionTimeLeft : " << graphicsData->sessionTimeLeft << endl
-		<< setw(24) << "distanceTraveled : " << graphicsData->distanceTraveled << endl
-		<< setw(24) << "isInPit : " << graphicsData->isInPit << endl
-		<< setw(24) << "currentSectorIndex : " << graphicsData->currentSectorIndex << endl
-		<< setw(24) << "lastSectorTime : " << graphicsData->lastSectorTime << endl
-		<< setw(24) << "numberOfLaps : " << graphicsData->numberOfLaps << endl
-		<< setw(24) << "TYRE COMPOUND : " << graphicsData->tyreCompound << endl
-		<< setw(24) << "replayMult : " << graphicsData->replayTimeMultiplier << endl
-		<< setw(24) << "normalizedCarPosition : " << graphicsData->normalizedCarPosition << endl
-		<< setw(24) << "carCoordinates : " << graphicsData->carCoordinates[0] << ", " << graphicsData->carCoordinates[1] << ", " << graphicsData->carCoordinates[2] << endl;
+		<< setw(24) << "packetID : "				<< graphicsData->packetId << endl
+		<< setw(24) << "STATUS : " 					<< graphicsData->status << endl
+		<< setw(24) << "session : " 				<< graphicsData->session << endl
+		<< setw(24) << "completed laps : " 			<< graphicsData->completedLaps << endl
+		<< setw(24) << "position : " 				<< graphicsData->position << endl
+		<< setw(24) << "current time s : " 			<< graphicsData->currentTime << endl
+		<< setw(24) << "current time : " 			<< graphicsData->iCurrentTime << endl
+		<< setw(24) << "last time : " 				<< graphicsData->iLastTime << endl
+		<< setw(24) << "best time : " 				<< graphicsData->iBestTime << endl
+		<< setw(24) << "sessionTimeLeft : " 		<< graphicsData->sessionTimeLeft << endl
+		<< setw(24) << "distanceTraveled : " 		<< graphicsData->distanceTraveled << endl
+		<< setw(24) << "isInPit : " 				<< graphicsData->isInPit << endl
+		<< setw(24) << "currentSectorIndex : " 		<< graphicsData->currentSectorIndex << endl
+		<< setw(24) << "lastSectorTime : " 			<< graphicsData->lastSectorTime << endl
+		<< setw(24) << "numberOfLaps : " 			<< graphicsData->numberOfLaps << endl
+		<< setw(24) << "TYRE COMPOUND : " 			<< graphicsData->tyreCompound << endl
+		<< setw(24) << "replayMult : " 				<< graphicsData->replayTimeMultiplier << endl
+		<< setw(24) << "normalizedCarPosition : " 	<< graphicsData->normalizedCarPosition << endl
+		<< setw(24) << "carCoordinates : " 			<< graphicsData->carCoordinates[0] << ", " << graphicsData->carCoordinates[1] << ", " << graphicsData->carCoordinates[2] << endl;
 
 	stringstream fileStaticOutput;
 	fileStaticOutput << "STATIC INFO =============================" << endl << endl
-		<<  setw(28) << "smVersion : " << fileStaticData->smVersion << endl
-		<<  setw(28) << "acVersion : " << fileStaticData->acVersion << endl
-		<<  setw(28) << "numberOfSessions : " << fileStaticData->numberOfSessions << endl
-		<<  setw(28) << "numCars : " << fileStaticData->numCars << endl
-		<<  setw(28) << "carModel : " << fileStaticData->carModel << endl
-		<<  setw(28) << "track : " << fileStaticData->track << endl
-		<<  setw(28) << "playerName : " << fileStaticData->playerName << endl
-		<<  setw(28) << "playerSurname : " << fileStaticData->playerSurname << endl
-		<<  setw(28) << "playerNick : " << fileStaticData->playerNick << endl
-		<<  setw(28) << "sectorCount : " << fileStaticData->sectorCount << endl
-		<<  setw(28) << "maxTorque : " << fileStaticData->maxTorque << endl
-		<<  setw(28) << "maxPower : " << fileStaticData->maxPower << endl
-		<<  setw(28) << "maxRpm : " << fileStaticData->maxRpm << endl
-		<<  setw(28) << "maxFuel : " << fileStaticData->maxFuel << endl
-		<<  setw(28) << "suspensionMaxTravel : " << fileStaticData->suspensionMaxTravel[0] << ", " << fileStaticData->suspensionMaxTravel[1] << ", " << fileStaticData->suspensionMaxTravel[2] << ", " << fileStaticData->suspensionMaxTravel[3] << endl
-		<<  setw(28) << "tyreRadius : " << fileStaticData->tyreRadius[0] << ", " << fileStaticData->tyreRadius[1] << ", " << fileStaticData->tyreRadius[2] << ", " << fileStaticData->tyreRadius[3] << endl
-		<<  setw(28) << "maxTurboBoost : " << fileStaticData->maxTurboBoost << endl
+		<< setw(28) << "smVersion : " 				<< fileStaticData->smVersion << endl
+		<< setw(28) << "acVersion : " 				<< fileStaticData->acVersion << endl
+		<< setw(28) << "numberOfSessions : " 		<< fileStaticData->numberOfSessions << endl
+		<< setw(28) << "numCars : " 				<< fileStaticData->numCars << endl
+		<< setw(28) << "carModel : " 				<< fileStaticData->carModel << endl
+		<< setw(28) << "track : " 					<< fileStaticData->track << endl
+		<< setw(28) << "playerName : " 				<< fileStaticData->playerName << endl
+		<< setw(28) << "playerSurname : " 			<< fileStaticData->playerSurname << endl
+		<< setw(28) << "playerNick : " 				<< fileStaticData->playerNick << endl
+		<< setw(28) << "sectorCount : " 			<< fileStaticData->sectorCount << endl
+		<< setw(28) << "maxTorque : " 				<< fileStaticData->maxTorque << endl
+		<< setw(28) << "maxPower : " 				<< fileStaticData->maxPower << endl
+		<< setw(28) << "maxRpm : " 					<< fileStaticData->maxRpm << endl
+		<< setw(28) << "maxFuel : " 				<< fileStaticData->maxFuel << endl
+		<< setw(28) << "suspensionMaxTravel : " 	<< fileStaticData->suspensionMaxTravel[0] << ", " << fileStaticData->suspensionMaxTravel[1] << ", " << fileStaticData->suspensionMaxTravel[2] << ", " << fileStaticData->suspensionMaxTravel[3] << endl
+		<< setw(28) << "tyreRadius : " 				<< fileStaticData->tyreRadius[0] << ", " << fileStaticData->tyreRadius[1] << ", " << fileStaticData->tyreRadius[2] << ", " << fileStaticData->tyreRadius[3] << endl
+		<< setw(28) << "maxTurboBoost : " 			<< fileStaticData->maxTurboBoost << endl
 		//<<  set2824) << "deprecated_1 : " << fileStaticData->deprecated_1 << endl
 		//<<  set2824) << "deprecated_2 : " << fileStaticData->deprecated_2 << endl
-		<<  setw(28) << "penaltiesEnabled : " << fileStaticData->penaltiesEnabled << endl
-		<<  setw(28) << "aidFuelRate : " << fileStaticData->aidFuelRate << endl
-		<<  setw(28) << "aidTireRate : " << fileStaticData->aidTireRate << endl
-		<<  setw(28) << "aidMechanicalDamage : " << fileStaticData->aidMechanicalDamage << endl
-		<<  setw(28) << "aidAllowTyreBlankets : " << fileStaticData->aidAllowTyreBlankets << endl
-		<<  setw(28) << "aidStability : " << fileStaticData->aidStability << endl
-		<<  setw(28) << "aidAutoClutch : " << fileStaticData->aidAutoClutch << endl
-		<<  setw(28) << "aidAutoBlip : " << fileStaticData->aidAutoBlip << endl
-		<<  setw(28) << "hasDRS : " << fileStaticData->hasDRS << endl
-		<<  setw(28) << "hasERS : " << fileStaticData->hasERS << endl
-		<<  setw(28) << "hasKERS : " << fileStaticData->hasKERS << endl
-		<<  setw(28) << "kersMaxJ : " << fileStaticData->kersMaxJ << endl
-		<<  setw(28) << "engineBrakeSettingsCount : " << fileStaticData->engineBrakeSettingsCount << endl
-		<<  setw(28) << "ersPowerControllerCount : " << fileStaticData->ersPowerControllerCount << endl
-		<<  setw(28) << "trackSPlineLength : " << fileStaticData->trackSPlineLength << endl
-		<<  setw(28) << "trackConfiguration : " << fileStaticData->trackConfiguration << endl;
+		<< setw(28) << "penaltiesEnabled : " 		<< fileStaticData->penaltiesEnabled << endl
+		<< setw(28) << "aidFuelRate : " 			<< fileStaticData->aidFuelRate << endl
+		<< setw(28) << "aidTireRate : " 			<< fileStaticData->aidTireRate << endl
+		<< setw(28) << "aidMechanicalDamage : " 	<< fileStaticData->aidMechanicalDamage << endl
+		<< setw(28) << "aidAllowTyreBlankets : " 	<< fileStaticData->aidAllowTyreBlankets << endl
+		<< setw(28) << "aidStability : " 			<< fileStaticData->aidStability << endl
+		<< setw(28) << "aidAutoClutch : " 			<< fileStaticData->aidAutoClutch << endl
+		<< setw(28) << "aidAutoBlip : "				<< fileStaticData->aidAutoBlip << endl
+		<< setw(28) << "hasDRS : " 					<< fileStaticData->hasDRS << endl
+		<< setw(28) << "hasERS : " 					<< fileStaticData->hasERS << endl
+		<< setw(28) << "hasKERS : " 				<< fileStaticData->hasKERS << endl
+		<< setw(28) << "kersMaxJ : "				<< fileStaticData->kersMaxJ << endl
+		<< setw(28) << "engineBrakeSettingsCount : " << fileStaticData->engineBrakeSettingsCount << endl
+		<< setw(28) << "ersPowerControllerCount : " << fileStaticData->ersPowerControllerCount << endl
+		<< setw(28) << "trackSPlineLength : " 		<< fileStaticData->trackSPlineLength << endl
+		<< setw(28) << "trackConfiguration : " 		<< fileStaticData->trackConfiguration << endl;
+		<< setw(28) << "ersMaxJ : " 				<< staticData->ersMaxJ << endl
+		<< setw(28) << "isTimedRace : " 			<< staticData->isTimedRace << endl
+		<< setw(28) << "hasExtraLap : " 			<< staticData->hasExtraLap << endl
+		<< setw(28) << "carSkin : " 				<< staticData->carSkin << endl
+		<< setw(28) << "reversedGridPosition : " 	<< staticData->reversedGridPositions << endl
+		<< setw(28) << "PitWindowStart : " 			<< staticData->PitWindowStart << endl
+		<< setw(28) << "PitWindowEnd : " 			<< staticData->PitWindowEnd << endl;
+
 
 	ofDrawBitmapStringHighlight(physicsOutput.str(), 20, 20);
 	ofDrawBitmapStringHighlight(graphicsOutput.str(), 620, 20);
