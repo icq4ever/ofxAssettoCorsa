@@ -31,41 +31,26 @@ typedef int AC_FLAG_TYPE;
 #define AC_CHECKERED_FLAG 5
 #define AC_PENALTY_FLAG 6
 
-
 class SPageFilePhysics {
 public:
 
 	int packetId = 0;
-
-	// input status
-	float steerAngle = 0;
 	float gas = 0;
 	float brake = 0;
-
 	float fuel = 0;
-
-	float speedKmh = 0;
 	int gear = 0;
 	int rpms = 0;
-
-	float tyreCoreTemperature[4];
-
+	float steerAngle = 0;
+	float speedKmh = 0;
 	float velocity[3];
 	float accG[3];
-
-
-	// environment
-	float airDensity = 0;
-	float airTemp = 0;
-	float roadTemp = 0;
-
 	float wheelSlip[4];
 	float wheelLoad[4];
 	float wheelsPressure[4];
 	float wheelAngularSpeed[4];
 	float tyreWear[4];
 	float tyreDirtyLevel[4];
-
+	float tyreCoreTemperature[4];
 	float camberRAD[4];
 	float suspensionTravel[4];
 	float drs = 0;
@@ -84,7 +69,9 @@ public:
 	float rideHeight[2];
 	float turboBoost = 0;
 	float ballast = 0;
-
+	float airDensity = 0;
+	float airTemp = 0;
+	float roadTemp = 0;
 	float localAngularVel[3];
 	float finalFF = 0;
 	float performanceMeter = 0;
@@ -116,16 +103,15 @@ public:
 	float localVelocity[3];
 };
 
-
 class SPageFileGraphic {
 public:
 	int packetId = 0;
 	AC_STATUS status = AC_OFF;
 	AC_SESSION_TYPE session = AC_PRACTICE;
-	wchar_t currentTime[15];
-	wchar_t lastTime[15];
-	wchar_t bestTime[15];
-	wchar_t split[15];
+	string currentTime;
+	string lastTime;
+	string bestTime;
+	string split;
 	int completedLaps = 0;
 	int position = 0;
 	int iCurrentTime = 0;
@@ -137,7 +123,7 @@ public:
 	int currentSectorIndex = 0;
 	int lastSectorTime = 0;
 	int numberOfLaps = 0;
-	wchar_t tyreCompound[33];
+	string tyreCompound;
 
 	float replayTimeMultiplier = 0;
 	float normalizedCarPosition = 0;
@@ -148,27 +134,30 @@ public:
 	int isInPitLane = 0;
 
 	float surfaceGrip = 0;
+	int mandatoryPitDone = 0;
+	float windSpeed = 0;
+	float windDirection = 0;
 };
 
 class SPageFileStatic {
 public:
-	wchar_t smVersion[15];
-	wchar_t acVersion[15];
+	string smVersion;
+	string acVersion;
 
 	// session static info
 	int numberOfSessions = 0;
 	int numCars = 0;
-	wchar_t carModel[33];
-	wchar_t track[33];
-	wchar_t playerName[33];
-	wchar_t playerSurname[33];
-	wchar_t playerNick[33];
+	string carModel;
+	string track;
+	string playerName;
+	string playerSurname;
+	string playerNick;
 	int sectorCount = 0;
 
 	// car static info
 	float maxTorque = 0;
 	float maxPower = 0;
-	int	maxRpm = 0;
+	int  maxRpm = 0;
 	float maxFuel = 0;
 	float suspensionMaxTravel[4];
 	float tyreRadius[4];
@@ -194,8 +183,14 @@ public:
 	int engineBrakeSettingsCount = 0;
 	int ersPowerControllerCount = 0;
 	float trackSPlineLength = 0;
-	wchar_t trackConfiguration[33];
+	string trackConfiguration;
 	float ersMaxJ = 0;
+	int isTimedRace = 0;
+	int hasExtraLap = 0;
+	string carSkin;
+	int reversedGridPositions;
+	int PitWindowStart;
+	int PitWindowEnd;
 };
 
 
@@ -225,4 +220,6 @@ public:
 	ofxOscReceiver receiver;
 
 	string physicsOSCAddress = "/telemetry/physics/";
+	string graphicsOSCAddress = "/telemetry/graphics/";
+	string fileStaticOSCAddress = "/telemetry/fileStatic/";
 };
