@@ -109,13 +109,20 @@ public:
 
 class SPageFileGraphic {
 public:
+	char DefChar = ' ';
 	int packetId = 0;
 	AC_STATUS status = AC_OFF;
 	AC_SESSION_TYPE session = AC_PRACTICE;
-	wchar_t currentTime[15];
-	wchar_t lastTime[15];
-	wchar_t bestTime[15];
-	wchar_t split[15];
+	wchar_t _currentTime[15];
+	wchar_t _lastTime[15];
+	wchar_t _bestTime[15];
+	wchar_t _split[15];
+
+	char currentTime[15];
+	char lastTime[15];
+	char bestTime[15];
+	char split[15];
+
 	int completedLaps = 0;
 	int position = 0;
 	int iCurrentTime = 0;
@@ -127,7 +134,8 @@ public:
 	int currentSectorIndex = 0;
 	int lastSectorTime = 0;
 	int numberOfLaps = 0;
-	wchar_t tyreCompound[33];
+	wchar_t _tyreCompound[33];
+	char tyreCompound[33];
 
 	float replayTimeMultiplier = 0;
 	float normalizedCarPosition = 0;
@@ -138,21 +146,35 @@ public:
 	int isInPitLane = 0;
 
 	float surfaceGrip = 0;
+	int mandatoryPitDone = 0;
+	float windSpeed = 0;
+	float windDirection = 0;
 };
 
 class SPageFileStatic {
 public:
-	wchar_t smVersion[15];
-	wchar_t acVersion[15];
+	wchar_t _smVersion[15];
+	wchar_t _acVersion[15];
+	char smVersion[15];
+	char acVersion[15];
+	char DefChar = ' ';
 
 	// session static info
 	int numberOfSessions = 0;
 	int numCars = 0;
-	wchar_t carModel[33];
-	wchar_t track[33];
-	wchar_t playerName[33];
-	wchar_t playerSurname[33];
-	wchar_t playerNick[33];
+
+	wchar_t _carModel[33];
+	wchar_t _track[33];
+	wchar_t _playerName[33];
+	wchar_t _playerSurname[33];
+	wchar_t _playerNick[33];
+
+	char carModel[33];
+	char track[33];
+	char playerName[33];
+	char playerSurname[33];
+	char playerNick[33];
+
 	int sectorCount = 0;
 
 	// car static info
@@ -184,8 +206,17 @@ public:
 	int engineBrakeSettingsCount = 0;
 	int ersPowerControllerCount = 0;
 	float trackSPlineLength = 0;
-	wchar_t trackConfiguration[33];
+
+	wchar_t _trackConfiguration[33];
+	char trackConfiguration[33];
 	float ersMaxJ = 0;
+	int isTimedRace = 0;
+	int hasExtraLap = 0;
+	wchar_t _carSkin[33];
+	char carSkin[33];
+	int reversedGridPositions;
+	int PitWindowStart;
+	int PitWindowEnd;
 };
 
 class ofApp : public ofBaseApp {
@@ -212,18 +243,18 @@ public:
 	SPageFileGraphic* graphicsData;
 
 	ofxSharedMemory<SPageFileStatic*> fileStatic;
-	SPageFileStatic* fileStaticData;
+	SPageFileStatic* staticData;
 
 	bool isConnected;
 	bool isPhysicsConnected;
 	bool isGraphicsConnected;
-	bool isFileStaticConnected;
+	bool isStaticConnected;
 
 	// OSC setup
 	ofxOscSender sender;
 	uint64_t lastOscSentTimer;
 
 	void sendPhysicsTelemetryOscMessage();
-	void sendFileGraphicTelemetryOscMessage();
-	void sendFileStaticTelemetryOscMessae();
+	void sendGraphicsTelemetryOscMessage();
+	void sendFileStaticTelemetryOscMessage();
 };
